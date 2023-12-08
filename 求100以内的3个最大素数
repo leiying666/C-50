@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<windows.h>
+#include <stdio.h>
+
+int prime(int n);
+void lagest(int num, int c, int a[]);
+int prime(int n)
+{
+    int j = 0;
+    for (j = 2; j * j <= n; j++)
+    {
+        if (n % j == 0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+void lagest(int num, int c, int a[])
+{
+    while (c>=0 && num>=2)
+    {
+        if (prime(num))
+        {
+            a[c--] = num--;
+        }
+        num--;
+    }
+}
+int main()
+{
+    int a[3] = {0};
+    lagest(100, 2, a);
+    printf("%d %d %d", a[0], a[1], a[2]);
+    return 0;
+}
